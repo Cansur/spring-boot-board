@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>게시물 작성품</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin : 0 auto;
+        margin-top: 40px;
+    }
+    .layout input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .layout textarea {
+        width: 100%;
+        min-height: 300px;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <div class="layout">
+        <a th:href="@{/list}">목록으로</a> <a th:href="@{/test}">테스트</a>
+        <form action="/writePro" method="post" enctype="multipart/form-data">
+            <input name="title" type="text">
+            <textarea name="content"></textarea>
+            <input type = "file" name = "file">
+            <button type="submit">작성</button>
+        </form>
+    </div>
+</body>
+</html>
