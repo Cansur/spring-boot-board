@@ -1,7 +1,6 @@
 package com.study.board.service;
 
 import java.io.File;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,6 @@ public class BoardService {
         file.transferTo(saveFile);
         board.setFilename(fileName);
         board.setFilepath("/files/" + fileName);
-
         boardRepository.save(board);
     }
 
@@ -43,6 +41,11 @@ public class BoardService {
 
         return boardRepository.findAll(pageable);
     } 
+
+    public Page<Board> boardSearchList(String searchKeyword, Pageable pageable){
+        
+        return boardRepository.findByTitleContaining(searchKeyword, pageable);
+    }
 
     // 특정 게시글 불러오기
     public Board boardView(Integer id){
